@@ -1,0 +1,34 @@
+1. Choosing & Evaluating LLMs
+
+Compared open-source (like LLaMA, Mistral, Falcon) and closed-source (like GPT-4, Claude) models.
+
+Understood Chinchilla Scaling Laws — balancing model size and training data for efficiency.
+
+Explored limitations of benchmarks, such as overfitting and data leakage issues.
+
+Studied advanced benchmarks and leaderboards (e.g., HuggingFace OpenLLM, LM Sys Chatbot Arena) for accurate LLM evaluation.
+
+Learned how human-rated and task-specific leaderboards help pick the best model for your use case.
+
+⚙️ 2. Code Generation & Optimization
+
+Compared GPT-4 vs Claude 3.5 and others for code generation in Python and C++.
+
+Discovered pitfalls in code generation (e.g., logic errors, syntax mismatches).
+
+Learned how Claude models outperform in speed and optimization (e.g., “13,000x faster” cases).
+
+Understood how to integrate Hugging Face endpoints for using open-source code generation models.
+
+Built and optimized Gradio UIs for LLM-powered code tools.
+
+Explored hybrid integration — combining open-source and frontier models for better results.
+
+📈 3. Performance & Business Metrics
+
+Differentiated model-centric metrics (accuracy, latency, token efficiency) vs business-centric metrics (ROI, usability, scalability).
+
+Gained insights into commercial applications of LLMs — from law and education to enterprise automation.
+
+✅ In short:
+You now understand how to evaluate, compare, and integrate LLMs (both open and closed) for code generation, optimization, and real-world deployment, with a focus on performance and business outcomes.

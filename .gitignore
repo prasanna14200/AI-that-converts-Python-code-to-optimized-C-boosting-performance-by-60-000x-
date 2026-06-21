@@ -1,0 +1,67 @@
+
+# Ignore environment and secrets
+
+.env
+
+# Ignore virtual environments
+
+.venv/
+venv/
+
+# Ignore Python cache
+
+**pycache**/
+_.pyc
+_.pyo
+
+# Ignore data/model files
+
+_.pkl
+_.jsonl
+\*.csv
+week8/train.pkl
+
+# Ignore IDE/editor config
+
+.vscode/
+.idea/
+
+# Ignore personal folders
+
+agentic/
+Meta-Llama-3-8B-Instruct/
+
+**pycache**/
+
+venv/
+**/venv/
+**pycache**/
+**/**pycache**/ \*_/.gradio/flagged/
+_.pkl
+_.csv
+_.jsonl
+
+# Python-related
+
+**pycache**/
+_.pkl
+_.csv
+_.json
+_.jsonl
+
+# VS Code, Jupyter, Gradio
+
+_.ipynb_checkpoints/
+_.vscode/
+.gradio/
+
+# Vector stores or embeddings
+
+products_vectorstore/
+
+week8/ensemble_model.pkl
+week8/memory.json
+week8/random_forest_model.pkl
+week8/test.pkl
+
+week8/**/*.pkl
