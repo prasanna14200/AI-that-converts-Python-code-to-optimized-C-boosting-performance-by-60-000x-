@@ -8,6 +8,8 @@ This public demo does not compile or execute visitor-submitted code. It only sen
 
 The preserved workflow uses Google Gemini. As of October 2, 2026, Google documents that new Gemini API accounts begin on the Free Tier for eligible models, subject to free-tier rate limits. The default model here is `gemini-3.5-flash-lite`; Google now limits 2.5 model access to users who actively used those models in the past and recommends `gemini-3.5-flash-lite` or `gemini-3.8-flash` for new projects.
 
+The app requires `google-genai>=2.0.0` because older 1.x SDK releases send a legacy Interactions API schema that the Gemini API now rejects.
+
 Set credentials with environment variables. Do not commit real keys.
 
 ## Local setup
