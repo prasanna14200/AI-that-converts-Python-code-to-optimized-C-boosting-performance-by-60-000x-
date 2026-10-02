@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Python to C++ Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar" aria-label="Converter header">
+        <div>
+          <p class="eyebrow">Gemini powered demo</p>
+          <h1>Python to C++ Converter</h1>
+        </div>
+        <div class="status" id="status">Ready</div>
+      </section>
+
+      <section class="workspace" aria-label="Code converter">
+        <div class="pane">
+          <div class="pane-header">
+            <label for="source">Python source</label>
+            <button type="button" id="loadSample">Sample</button>
+          </div>
+          <textarea id="source" spellcheck="false" autocomplete="off" placeholder="Paste Python code here"></textarea>
+        </div>
+
+        <div class="actions" aria-label="Conversion controls">
+          <button type="button" id="convert">Convert</button>
+          <button type="button" id="clear">Clear</button>
+        </div>
+
+        <div class="pane">
+          <div class="pane-header">
+            <label for="output">Generated C++</label>
+            <div class="button-row">
+              <button type="button" id="copy">Copy</button>
+              <button type="button" id="download">Download</button>
+            </div>
+          </div>
+          <textarea id="output" spellcheck="false" autocomplete="off" readonly placeholder="Generated C++ appears here"></textarea>
+        </div>
+      </section>
+
+      <p class="note">
+        This public app converts and displays code only. It does not compile or execute visitor-submitted programs.
+      </p>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
