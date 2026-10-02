@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 import app
-from converter import build_prompt, clean_model_output
+from converter import DEFAULT_MODEL, build_prompt, clean_model_output
 
 
 class ConverterTests(unittest.TestCase):
@@ -16,6 +16,9 @@ class ConverterTests(unittest.TestCase):
     def test_clean_model_output_removes_markdown_fence(self):
         cpp = clean_model_output("```cpp\n#include <iostream>\nint main(){}\n```")
         self.assertEqual(cpp, "#include <iostream>\nint main(){}")
+
+    def test_default_model_is_available_for_new_projects(self):
+        self.assertEqual(DEFAULT_MODEL, "gemini-3.5-flash-lite")
 
 
 class AppTests(unittest.TestCase):
@@ -43,8 +46,8 @@ class AppTests(unittest.TestCase):
     def test_successful_conversion(self, client_class):
         fake_client = Mock()
         fake_response = Mock()
-        fake_response.text = "```cpp\n#include <iostream>\nint main(){std::cout << 1;}\n```"
-        fake_client.models.generate_content.return_value = fake_response
+        fake_response.output_text = "```cpp\n#include <iostream>\nint main(){std::cout << 1;}\n```"
+        fake_client.interactions.create.return_value = fake_response
         client_class.return_value = fake_client
 
         with patch.dict(os.environ, {"GEMINI_API_KEY": "test-key", "GEMINI_MODEL": "test-model"}):
@@ -59,7 +62,7 @@ class AppTests(unittest.TestCase):
     @patch("converter.genai.Client")
     def test_model_error(self, client_class):
         fake_client = Mock()
-        fake_client.models.generate_content.side_effect = RuntimeError("rate limit")
+        fake_client.interactions.create.side_effect = RuntimeError("rate limit")
         client_class.return_value = fake_client
 
         with patch.dict(os.environ, {"GEMINI_API_KEY": "test-key"}):

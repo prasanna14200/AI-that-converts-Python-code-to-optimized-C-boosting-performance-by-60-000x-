@@ -6,7 +6,7 @@ from google import genai
 from google.genai import types
 
 
-DEFAULT_MODEL = "gemini-2.5-flash-lite"
+DEFAULT_MODEL = "gemini-3.5-flash-lite"
 MAX_SOURCE_CHARS = 20000
 
 
@@ -54,18 +54,30 @@ def convert_python_to_cpp(python_code: str) -> ConversionResult:
     model_name = os.getenv("GEMINI_MODEL", DEFAULT_MODEL)
     try:
         client = genai.Client(api_key=api_key)
-        response = client.models.generate_content(
-            model=model_name,
-            contents=build_prompt(source),
-            config=types.GenerateContentConfig(
-                temperature=0.2,
-                max_output_tokens=4096,
-            ),
-        )
+        prompt = build_prompt(source)
+        try:
+            response = client.interactions.create(
+                model=model_name,
+                input=prompt,
+                generation_config={
+                    "temperature": 0.2,
+                    "max_output_tokens": 4096,
+                },
+            )
+            output = getattr(response, "output_text", None)
+        except AttributeError:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.2,
+                    max_output_tokens=4096,
+                ),
+            )
+            output = getattr(response, "text", None)
     except Exception as exc:
         raise ConversionError(f"Gemini conversion failed: {exc}") from exc
 
-    output = getattr(response, "text", None)
     if not output:
         raise ConversionError("Gemini returned an empty response.")
 

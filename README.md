@@ -6,7 +6,7 @@ This public demo does not compile or execute visitor-submitted code. It only sen
 
 ## Provider and free tier
 
-The preserved workflow uses Google Gemini. As of October 2, 2026, Google documents that new Gemini API accounts begin on the Free Tier for eligible models, subject to free-tier rate limits. The default model here is `gemini-2.5-flash-lite`, which Google lists with free-of-charge input and output prices on the Free Tier.
+The preserved workflow uses Google Gemini. As of October 2, 2026, Google documents that new Gemini API accounts begin on the Free Tier for eligible models, subject to free-tier rate limits. The default model here is `gemini-3.5-flash-lite`; Google now limits 2.5 model access to users who actively used those models in the past and recommends `gemini-3.5-flash-lite` or `gemini-3.8-flash` for new projects.
 
 Set credentials with environment variables. Do not commit real keys.
 
